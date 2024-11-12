@@ -15,13 +15,14 @@ dotenv.config({
 
 
 connectDB()
-
-
-
-
-
-
-
+    .then(() => {
+        app.listen(process.env.PORT || 8000, () => {
+            console.log(`Serer is Running at Port: ${process.env.PORT}`);
+        })
+    })
+    .catch((error) => {
+        console.log("Mongo DB Connection Failed !!!!", err);
+    })
 
 // const app = express()
 //     (async () => {
