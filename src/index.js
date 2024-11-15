@@ -11,14 +11,17 @@ import { app } from './app.js'
 //const app = express();
 
 dotenv.config({
-    path: "./env"
+    path: "./.env"
 })
 
 
 
 connectDB()
     .then(() => {
-        app.listen(process.env.PORT || 8000, () => {
+
+        const randomPort = Math.floor(Math.random() * (65535 - 1000 + 1)) + 1000;
+
+        app.listen(process.env.PORT || randomPort, () => {
             console.log(`Server is Running at Port: ${process.env.PORT}`);
         })
     })
